@@ -1,4 +1,13 @@
+#ifndef UNICODE
+#define UNICODE
+#define UNICODE_WAS_UNDEFINED
+#endif
+
 #include "Window.h"
+
+#ifdef UNICODE_WAS_UNDEFINED
+#undef UNICODE
+#endif
 
 
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
@@ -26,7 +35,7 @@ Window::Window()
     wndCLass.hInstance = m_hInstance;
     wndCLass.hIcon = LoadIcon(NULL, IDI_WINLOGO);
     wndCLass.hCursor = LoadCursor(NULL, IDC_ARROW);
-    wndCLass.lpfnWndProc = nullptr;
+    wndCLass.lpfnWndProc = WindowProc;
 
     RegisterClass(&wndCLass);
 
@@ -64,7 +73,7 @@ Window::Window()
 Window::~Window()
 {
     const wchar_t* CLASS_NAME = L"Window Class";
-
+    
     UnregisterClass(CLASS_NAME, m_hInstance);
 }
 
