@@ -11,7 +11,8 @@
 				"${file}",
 				"-o",
 				"${fileDirname}\\${fileBasenameNoExtension}.exe",
-				"${fileDirname}\\Window.cpp"
+				"${fileDirname}\\Window.cpp",
+				"-lgdi32"
 			],
 			"options": {
 				"cwd": "${fileDirname}"
