@@ -32,3 +32,5 @@
 *.app
 
 conceptArtCalc.png
+line_grid.cpp
+.vscode
